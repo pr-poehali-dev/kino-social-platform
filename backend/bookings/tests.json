@@ -1,0 +1,54 @@
+{
+  "tests": [
+    {
+      "name": "OPTIONS request for CORS",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "expectedHeaders": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    },
+    {
+      "name": "Create booking with valid data",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "location_id": 1,
+        "name": "Иван Иванов",
+        "email": "ivan@example.com",
+        "phone": "+79991234567",
+        "date": "2024-12-25",
+        "time": "19:00",
+        "price": 5000
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "booking_id": "string",
+        "location_id": 1,
+        "price": 5000
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Invalid date format",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "location_id": 1,
+        "name": "Test User",
+        "email": "test@example.com",
+        "phone": "+79991234567",
+        "date": "25-12-2024",
+        "time": "19:00",
+        "price": 3000
+      },
+      "expectedStatus": 400,
+      "expectedBody": {
+        "error": "string"
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}
