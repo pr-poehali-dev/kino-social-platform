@@ -230,13 +230,11 @@ export default function Index() {
                     <CardTitle className="flex items-start justify-between">
                       <span className="text-lg">{location.name}</span>
                     </CardTitle>
-                    <CardDescription className="flex items-center gap-2">
-                      <div className="flex items-center">
-                        <Icon name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
-                        <span className="ml-1">{location.rating}</span>
-                      </div>
-                      <span className="text-muted-foreground">({location.reviews} отзывов)</span>
-                    </CardDescription>
+                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <Icon name="Star" size={16} className="text-yellow-500 fill-yellow-500" />
+                      <span>{location.rating}</span>
+                      <span>({location.reviews} отзывов)</span>
+                    </div>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">{location.description}</p>
